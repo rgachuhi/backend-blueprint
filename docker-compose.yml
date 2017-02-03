@@ -1,0 +1,21 @@
+version: '2'
+services:
+  authz:
+    container_name: authorization
+    image: oli/authorization
+    env_file: envs
+    ports:
+     - "8081:8080"
+     - "9991:9990"
+    networks:
+     - service-tier
+    depends_on:
+     - mysql-authz
+  mysql-authz:
+    image: mysql
+    env_file: envs
+    networks:
+      - service-tier
+networks:
+  service-tier:
+    driver: bridge
