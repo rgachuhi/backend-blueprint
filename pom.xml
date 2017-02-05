@@ -162,6 +162,10 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <arquillian.launch>wildfly-managed</arquillian.launch>
+                                <managementport>${managementport}</managementport>
+                                <adminuser>${adminuser}</adminuser>
+                                <adminpass>${adminpass}</adminpass>
+                                <serverport>${serverport}</serverport>
                             </systemPropertyVariables>
                             <includes>
                                 <include>edu/cmu/oli/authz/*</include>
@@ -199,6 +203,10 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <arquillian.launch>wildfly-remote</arquillian.launch>
+                                <managementport>${managementport}</managementport>
+                                <adminuser>${adminuser}</adminuser>
+                                <adminpass>${adminpass}</adminpass>
+                                <serverport>${serverport}</serverport>
                             </systemPropertyVariables>
                             <includes>
                                 <include>edu/cmu/oli/authz/*</include>
@@ -208,6 +216,5 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 </project>
