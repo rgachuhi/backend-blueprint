@@ -179,23 +179,6 @@
             <!-- Run with: mvn clean test -Parq-wildfly-remote -->
             <id>arq-wildfly-remote</id>
             <dependencies>
-                <!--<dependency>
-                    <groupId>org.arquillian.cube</groupId>
-                    <artifactId>arquillian-cube-docker</artifactId>
-                    <version>1.0.0.Alpha16</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.wildfly.arquillian</groupId>
-                    <artifactId>wildfly-arquillian-container-remote</artifactId>
-                    <version>2.0.2.Final</version>
-                    <scope>test</scope>
-                </dependency>-->
-                <!--<dependency>
-                    <groupId>org.arquillian.container</groupId>
-                    <artifactId>arquillian-container-chameleon</artifactId>
-                    <version>1.0.0.Beta1</version>
-                </dependency>-->
                 <dependency>
                     <groupId>org.wildfly</groupId>
                     <artifactId>wildfly-arquillian-container-remote</artifactId>
