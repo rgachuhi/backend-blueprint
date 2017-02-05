@@ -34,11 +34,12 @@ import javax.inject.Inject;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RunWith(Arquillian.class)
 public class TemplateTestIT {
-    @Deployment(testable = false)
+    @Deployment
     public static Archive<?> createTestArchive() {
 
         Collection<String> dependencies = Arrays.asList(
@@ -55,7 +56,7 @@ public class TemplateTestIT {
                 .addClasses(Action.class, ActionEdge.class, Actor.class, ActorEdge.class,
                         Authorization.class, Item.class, ItemEdge.class, LoggerExposer.class,
                         AuthzProvider.class)
-                .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsResource("import.sql", "import.sql")
                 .addAsLibraries(files)
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -70,18 +71,17 @@ public class TemplateTestIT {
     Logger log;
 
     @Test
-    public void should_confirm_authz_checkes_are_working() throws Exception {
+    public void should_confirm_true_for_existing_authorization() throws Exception {
         String authorized = authzProvider.isAuthorized("administrator", "delete", "authorizations");
-        //log.log(Level.INFO, "The return value from is authorized call " +authorized);
+        log.log(Level.INFO, "The return value from is authorized call " +authorized);
         Assert.assertEquals(authorized, "true");
     }
 
     @Test
-    public void should_test_find_all_per_entity_is_working() throws Exception {
+    public void should_find_list_of_existing_entity() throws Exception {
         String authorized = authzProvider.process("authorization", null, null, "find");
-        //log.log(Level.INFO, "The return value from find all call " +authorized);
+        log.log(Level.INFO, "The return value from find all call " +authorized);
         // Assert that authorized is not an empty json array
         Assert.assertNotSame(authorized, "[]");
     }
-
 }

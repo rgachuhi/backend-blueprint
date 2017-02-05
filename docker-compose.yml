@@ -1,9 +1,12 @@
-version: '2'
+version: '3'
 services:
   authz:
-    container_name: authorization
+    build: .
     image: oli/authorization
-    env_file: envs
+    container_name: authz
+    env_file: .envs
+    environment:
+      - MYSQL_PORT_3306_TCP_ADDR=mysql-authz
     ports:
      - "8081:8080"
      - "9991:9990"
@@ -13,7 +16,7 @@ services:
      - mysql-authz
   mysql-authz:
     image: mysql
-    env_file: envs
+    env_file: .envs
     networks:
       - service-tier
 networks:
