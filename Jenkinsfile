@@ -6,7 +6,7 @@ node {
   //}
 
   stage('Create Docker Image') {
-    sh 'docker-compose build'
+    sh 'docker build -t oli/authorization .'
   }
 
   stage ('Run Application') {
